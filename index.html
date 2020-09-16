@@ -45,23 +45,18 @@
       }
       function failure() {}
 
-      // Listen for click on map
-      google.maps.event.addListener(map, "click", function (event) {
-        // Add marker
-        addMarker({ coords: event.latLng });
-      });
+      // // Listen for click on map
+      // google.maps.event.addListener(map, "click", function (event) {
+      //   // Add marker
+      //   addMarker({ coords: event.latLng });
+      // });
 
-
-
-
-
-
-      // Add Marker Function
-      function addMarker(props){
-        var marker = new google.maps.Marker({
-          position:props.coords,
-          map:map
-        });
+      // // Add Marker Function
+      // function addMarker(props){
+      //   var markers = new google.maps.Marker({
+      //     position:props.coords,
+      //     map:map
+      //   });
     </script>
     <script
       defer
