@@ -22,44 +22,45 @@
     <div id="map"></div>
 
     <script>
-      x = navigator.geolocation;
+            x = navigator.geolocation;
 
-      x.getCurrentPosition(success, failure);
+            x.getCurrentPosition(success, failure);
 
-      function success(position) {
-        var myLat = position.coords.latitude;
-        var myLong = position.coords.longitude;
+            function success(position) {
+              var myLat = position.coords.latitude;
+              var myLong = position.coords.longitude;
 
-        var coords = new google.maps.LatLng(myLat, myLong);
+              var coords = new google.maps.LatLng(myLat, myLong);
 
-        var mapOptions = {
-          zoom: 8,
-          center: coords,
-          myTypeId: google.maps.MapTypeId.ROADMAP,
-        };
-        var map = new google.maps.Map(
-          document.getElementById("map"),
-          mapOptions
-        );
-        var marker = new google.maps.Marker({ map: map, position: coords });
+              var mapOptions = {
+                zoom: 8,
+                center: coords,
+                myTypeId: google.maps.MapTypeId.ROADMAP,
+              };
+              var map = new google.maps.Map(
+                document.getElementById("map"),
+                mapOptions
+              );
+              var marker = new google.maps.Marker({ map: map, position: coords });
 
 
+              // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+      // Listen for click on map
+      google.maps.event.addListener(map, "click", function (event) {
+              // Add marker
+              addMarker({ coords: event.latLng });
+            });
 
-// Listen for click on map
-google.maps.event.addListener(map, "click", function (event) {
-        // Add marker
-        addMarker({ coords: event.latLng });
-      });
+            // Add Marker Function
+            function addMarker(props){
+              var markers = new google.maps.Marker({
+                position:props.coords,
+                map:map
+              });
 
-      // Add Marker Function
-      function addMarker(props){
-        var markers = new google.maps.Marker({
-          position:props.coords,
-          map:map
-        });
-
-      }
-      function failure() {}
+            }
+            function failure() {}
     </script>
     <script
       defer
@@ -67,5 +68,3 @@ google.maps.event.addListener(map, "click", function (event) {
     ></script>
   </body>
 </html>
-
-
