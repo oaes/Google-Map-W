@@ -42,21 +42,24 @@
           mapOptions
         );
         var marker = new google.maps.Marker({ map: map, position: coords });
+
+
+
+// Listen for click on map
+google.maps.event.addListener(map, "click", function (event) {
+        // Add marker
+        addMarker({ coords: event.latLng });
+      });
+
+      // Add Marker Function
+      function addMarker(props){
+        var markers = new google.maps.Marker({
+          position:props.coords,
+          map:map
+        });
+
       }
       function failure() {}
-
-      // // Listen for click on map
-      // google.maps.event.addListener(map, "click", function (event) {
-      //   // Add marker
-      //   addMarker({ coords: event.latLng });
-      // });
-
-      // // Add Marker Function
-      // function addMarker(props){
-      //   var markers = new google.maps.Marker({
-      //     position:props.coords,
-      //     map:map
-      //   });
     </script>
     <script
       defer
@@ -65,4 +68,4 @@
   </body>
 </html>
 
-<!-- AIzaSyDtJU4HZVwlkKdHm1IQo3twDI6rPDrB2qY-->
+
