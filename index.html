@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full screen Google Map Integration</title>
+    <style>
+      #map {
+        height: 100%;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full screen Google Map Integration</title>
-  <style>
-    #map {
-      height: 100%;
-    }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
 
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
-</head>
+  <body>
+    <div id="map"></div>
 
-<body>
-  <div id="map"></div>
+    <script>
+      "use strict";
 
-  <script>
-    "use strict";
+      let map;
 
-    let map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: {
+            lat: 23.777176,
+            lng: 90.399452,
+          },
+          zoom: 8,
+        });
 
-    function initMap() {
-      map = new google.maps.Map(document.getElementById("map"), {
-        center: {
-          lat: 23.777176,
-          lng: 90.399452,
-        },
-        zoom: 8,
-      });
+        // Add marker
+      }
 
-      // Add marker
-     
-     x = navigator.geolocation;
+      x = navigator.geolocation;
 
-     x.getCurrentPosition(success, failure);
+      x.getCurrentPosition(success, failure);
 
-     function success(position){
-       var myLat = position.coords.latitude;
-       var myLong = position.coords.longitude;
+      function success(position) {
+        var myLat = position.coords.latitude;
+        var myLong = position.coords.longitude;
 
-       var coords= new google.maps.LatLng(myLat, myLong);
+        var coords = new google.maps.LatLng(myLat, myLong);
 
-       var mapOptions = {
-         zoom:8,
-         center: coords,
-         myTypeId: google.maps.MapTypeId.ROADMAP
-       }
-       var map =new google.maps.Map(document.getElementById('map'), mapOptions)
-       var marker= new google.maps.Marker({map:map, position:coords})
-     }
-  function failure(){}
-
-
-    }
-  </script>
-  <script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtJU4HZVwlkKdHm1IQo3twDI6rPDrB2qY&callback=initMap"></script>
-</body>
-
+        var mapOptions = {
+          zoom: 8,
+          center: coords,
+          myTypeId: google.maps.MapTypeId.ROADMAP,
+        };
+        var map = new google.maps.Map(
+          document.getElementById("map"),
+          mapOptions
+        );
+        var marker = new google.maps.Marker({ map: map, position: coords });
+      }
+      function failure() {}
+    </script>
+    <script
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtJU4HZVwlkKdHm1IQo3twDI6rPDrB2qY&callback=initMap"
+    ></script>
+  </body>
 </html>
 
 <!-- AIzaSyDtJU4HZVwlkKdHm1IQo3twDI6rPDrB2qY-->
