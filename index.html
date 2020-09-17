@@ -49,14 +49,14 @@
       var infoWindow = new google.maps.infoWindow({
         content: "<h1>gaul ghat len</h1>",
       });
-      var markers = new google.maps.Marker({
+      var marker = new google.maps.Marker({
         coords: { lat: 23.777176, lng: 90.399452 },
         map: map,
         title: "Dhaka",
       });
 
-      markers.addListener("click", function () {
-        infoWindow.open(map, markers);
+      marker.addListener("click", function () {
+        infoWindow.open(map, marker);
       });
     </script>
     <script
