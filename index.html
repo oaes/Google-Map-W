@@ -46,25 +46,12 @@
       function failure() {}
 
       //add even listener
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 8,
-          center: { lat: 23.777176, lng: 90.399452 },
-        });
-
-        map.addListener("click", function (e) {
-          placeMarkerAndPanTo();
-        });
-      }
-
-      function placeMarkerAndPanTo(latLng, map) {
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map,
-          content:"<h1>gaul ghat len </h1>"
-        });
-        map.panTo(latLng);
-      }
+      var infoWindow = new google.maps.infoWindow({
+        content: "<h1>gaul ghat len</h1>",
+      });
+      marker.addListener("click", function () {
+        infoWindow.open(map, marker);
+      });
     </script>
     <script
       defer
